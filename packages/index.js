@@ -1,3 +1,5 @@
+import 'normalize.css'
+
 import Button from './Button'
 
 const components = [

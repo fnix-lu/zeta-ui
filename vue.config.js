@@ -1,7 +1,7 @@
 const path = require('path')
 
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, dir)
 }
 
 module.exports = {
@@ -13,7 +13,17 @@ module.exports = {
     }
   },
 
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: '@import \'@/styles/variables.scss\';'
+      }
+    }
+  },
+
   chainWebpack (config) {
+    config.resolve.alias
+      .set('@', resolve('./'))
     config.module
       .rule('js')
       .include.add(resolve('packages'))
